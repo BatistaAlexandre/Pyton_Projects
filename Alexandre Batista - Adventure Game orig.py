@@ -1,18 +1,20 @@
 import time 
 
+#Different User Response References
+answer_A = ["A", "a"]
+answer_B = ["B", "b"]
+answer_C = ["C", "c"]
+yes = ["Y", "y", "yes"]
+no = ["N", "n", "no"]
+
 #Objects to be grabbed
 sword = 0
 flower = 0
 
-required = ("\nUse one of the options above!\n") #Cutting down on duplication
+required = ("\nUse only A, B, or C\n") #Cutting down on duplication
 
 #The story is broken into sections, starting with "intro"
 def intro():
-  answer_A = ["ROCK", "Rock", "rock", "rOCK"]
-  answer_B = ["WAIT", "Wait", "wait", "wAIT"]
-  answer_C = ["RUN", "Run", "run", "rUN"]
- 
-
   print ("After an accident at sea with a strong storm"
   ", you fall off your hiatus and wake up on a beach in the morning"
    "with a huge headache and very disoriented."
@@ -20,9 +22,9 @@ def intro():
   "but you are interrupted when you hear something coming out of the water and coming towards you."
   "A tipe of sea monster is running towards you. You will :")
   time.sleep(1)
-  print ("""  >> TO GRAB A NEARBY ROCK AND THROW IT AT THE MONSTER: TIPE (ROCK)     
-   >> TO LIE DOWN AND WAIT TO BE ATTACKED: TIPE (WAIT)
-   >> TO RUN: TIPE (RUN)""")   # It was easier to put the variables A, B and C, but they are related to complete words.
+  print ("""  A. GRAB A NEARBY ROCK AND THROW IT AT THE MONSTER
+  B. LIE DOWN AND WAIT TO BE MAULED
+  C. RUN""")
   choice = input(">>> ") #Here is your first choice.
   if choice in answer_A:
     option_rock()
@@ -35,17 +37,13 @@ def intro():
     print (required)
     intro()
 
-def option_rock():
-  answer_A = ["RUN", "Run", "run", "rUN"] 
-  answer_B = ["ROCK", "Rock", "rock", "rOCK"]
-  answer_C = ["CAVE", "Cave", "cave", "cAVE"]
-
+def option_rock(): 
   print ("\nThe moster is stunned, but regains control. He begins "
   "running towards you again. Will you:")
   time.sleep(1)
-  print ("""  >> TO RUN: TIPE (RUN)
-  >> TO THROW ANOTHER ROCK: TIPE (ROCK)
-  >> TO RUN TOWARDS A NEARBY CAVE: TIPE (CAVE)""")
+  print ("""  A. RUN
+  B. THROW ANOTHER ROCK
+  C. RUN TOWARDS A NEARBY CAVE""")
   choice = input(">>> ")
   if choice in answer_A:
     option_run()
@@ -60,15 +58,9 @@ def option_rock():
     option_rock()
 
 def option_cave():
-  answer_A = ["HIDE", "Hide", "hide", "hIDE"] 
-  answer_B = ["FIGHT", "Fight", "fight", "fIGHT"]
-  answer_C = ["RUN", "Run", "run", "rUN"]
-  yes = ["Y", "y", "yes" "YES"]
-  no = ["N", "n", "no"]
-
   print ("\nYou were hesitant, since the cave was dark and "
   "ominous. Before you fully enter, you notice a shiny sword on "
-  "the ground. Do you pick up a sword. Yes/Not ?")
+  "the ground. Do you pick up a sword. Yes/N?")
   choice = input(">>> ")
   if choice in yes:
     sword = 1 #adds a sword
@@ -76,9 +68,9 @@ def option_cave():
     sword = 0
   print ("\nWhat do you do next?")
   time.sleep(1)
-  print ("""  >> TO HIDE IN SILENCE TIPE (HIDE)
-  >> TO FIGHT TIPE (FIGHT)
-  >> TO RUN: TIPE (RUN)""")
+  print ("""  A. HIDE IN SILENCE
+  B. FIGHT
+  C. RUN""")
   choice = input(">>> ")
   if choice in answer_A:
     print ("\nReally? You're going to hide in the dark? But what if"
@@ -104,16 +96,12 @@ def option_cave():
     option_cave()
 
 def option_run():
-  answer_A = ["HIDE", "Hide", "hide", "hIDE"] 
-  answer_B = ["FIGHT", "Fight", "fight", "fIGHT"]
-  answer_C = ["TOWN", "Town", "town", "tOWN"]
-
   print ("\nYou run as quickly as possible, but the monster's "
   "speed is too great. You will:")
   time.sleep(1)
-  print (""">> TO HIDE BEHIND BOULDER: TIPE (HIDE)
-  >> TO FIGHT THE MONSTER: TIPE (FIGHT)
-  >> TO RUN TOWARDS AN ABANDONED TOWN: TIPE (TOWN)""")
+  print ("""  A. HIDE BEHIND BOULDER
+  B. TRAPPED, SO YOU FIGHT
+  C. RUN TOWARDS AN ABANDONED TOWN""")
   choice = input(">>> ")
   if choice in answer_A:
     print ("You're easily spotted. "
@@ -128,15 +116,12 @@ def option_run():
     option_run()
     
 def option_town():
-  yes = ["Y", "y", "yes" "YES"]
-  no = ["N", "n", "no"]
-
   print ("\nWhile frantically running, you notice a rusted "
   "sword lying in the mud. You quickly reach down and grab it, "
   "but miss. You try to calm your heavy breathing as you hide "
   "behind a delapitated building, waiting for the monster to come "
   "charging around the corner. You notice a purple flower "
-  "near your foot. Do you pick it up? Yes/Not")
+  "near your foot. Do you pick it up? Y/N")
   choice = input(">>> ")
   if choice in yes:
     flower = 1 #adds a flower
@@ -147,9 +132,8 @@ def option_town():
   time.sleep(1)
   if flower > 0:
     print ("\nYou quickly hold out the purple flower, somehow "
-    "hoping it will stop the monster. It does! The monster was"
-    " looking at you with love in his eyes. "
-    
+    "hoping it will stop the monster. It does! The monster was looking "
+    "for love. "
     "\n\nThis got weird, but you survived!")
   else: #If the user didn't grab the sword
      print ("\nMaybe you should have picked up the flower. "
